@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27703.2042
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfApp1", "WpfApp1\WpfApp1.csproj", "{BCE4A2F1-1C0A-4523-81B1-B07E4A345D55}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChampionStatsBuilder", "ChampionStatsBuilder\ChampionStatsBuilder.csproj", "{B6BD8BCC-CCDD-4B16-AFD2-726C935365D5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChampionStatsProcessor", "ChampionStatsProcessor\ChampionStatsProcessor.csproj", "{F1F384E5-5F29-4365-8A66-E6135C0BAC61}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +13,14 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{BCE4A2F1-1C0A-4523-81B1-B07E4A345D55}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BCE4A2F1-1C0A-4523-81B1-B07E4A345D55}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BCE4A2F1-1C0A-4523-81B1-B07E4A345D55}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{BCE4A2F1-1C0A-4523-81B1-B07E4A345D55}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B6BD8BCC-CCDD-4B16-AFD2-726C935365D5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B6BD8BCC-CCDD-4B16-AFD2-726C935365D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B6BD8BCC-CCDD-4B16-AFD2-726C935365D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B6BD8BCC-CCDD-4B16-AFD2-726C935365D5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F1F384E5-5F29-4365-8A66-E6135C0BAC61}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F1F384E5-5F29-4365-8A66-E6135C0BAC61}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F1F384E5-5F29-4365-8A66-E6135C0BAC61}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F1F384E5-5F29-4365-8A66-E6135C0BAC61}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
