@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ChampionStatsBuilder"
         mc:Ignorable="d"
-        Title="MainWindow" Height="710.543" Width="500" ResizeMode="CanMinimize">
+        Title="Champion Stats Viewer" Height="710.543" Width="500" ResizeMode="CanMinimize">
     <Grid>
         <StackPanel HorizontalAlignment="Left" Height="647" Margin="10,10,0,0" VerticalAlignment="Top" Width="236">
             <Label Content="Champion"/>

@@ -56,9 +56,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ChampionStatsBuilder\ChampionStatsBuilder.csproj">
+    <ProjectReference Include="..\ChampionStatsBuilder\ChampionStatsViewer.csproj">
       <Project>{b6bd8bcc-ccdd-4b16-afd2-726c935365d5}</Project>
-      <Name>ChampionStatsBuilder</Name>
+      <Name>ChampionStatsViewer</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

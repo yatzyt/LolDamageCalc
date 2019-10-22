@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27703.2042
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChampionStatsBuilder", "ChampionStatsBuilder\ChampionStatsBuilder.csproj", "{B6BD8BCC-CCDD-4B16-AFD2-726C935365D5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChampionStatsViewer", "ChampionStatsBuilder\ChampionStatsViewer.csproj", "{B6BD8BCC-CCDD-4B16-AFD2-726C935365D5}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChampionStatsProcessor", "ChampionStatsProcessor\ChampionStatsProcessor.csproj", "{F1F384E5-5F29-4365-8A66-E6135C0BAC61}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ItemStatsBuilder", "ItemStatsBuilder\ItemStatsBuilder.csproj", "{D21A8260-F791-4123-8CA3-AF87EC57A1D0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ItemStatsViewer", "ItemStatsBuilder\ItemStatsViewer.csproj", "{D21A8260-F791-4123-8CA3-AF87EC57A1D0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

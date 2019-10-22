@@ -34,14 +34,23 @@ namespace ItemStatsBuilder
 
             foreach (JToken itemData in data)
             {
-                rtb1.AppendText((string)itemData.First.SelectToken("name")+"\n");
-                
+                Item item = new Item((string)itemData.First.SelectToken("name"));
+                item.stats = itemData.First.SelectToken("stats").ToObject<Dictionary<string, string>>();
+                items.Add(item);                
             }
         }
     }
 
     public class Item
     {
+        public Item()
+        { }
+
+        public Item(string n)
+        { name = n; }
+
+        public string name { get; set; }
+
         public Dictionary<string, string> stats { get; set; }
     }
 }
