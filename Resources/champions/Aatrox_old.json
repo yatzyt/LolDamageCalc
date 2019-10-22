@@ -1,0 +1,22 @@
+{
+  "Name": "Aatrox",
+  "Health": "580",
+  "HealthRegen": "5",
+  "Mana": "0",
+  "ManaRegen": "0",
+  "Manaless": "True",
+  "AutoRange": "175",
+  "MovementSpeed": "345",
+  "AttackDamage": "60",
+  "AttackSpeed": "0.651",
+  "Armor": "33",
+  "MagicResist": "32.1",
+  "Health_Growth": "80",
+  "HealthRegen_Growth": "0.25",
+  "Mana_Growth": "0",
+  "ManaRegen_Growth": "0",
+  "AD_Growth": "5",
+  "AS_Growth": "0.025",
+  "Armor_Growth": "3.25",
+  "MR_Growth": "1.25"
+}
