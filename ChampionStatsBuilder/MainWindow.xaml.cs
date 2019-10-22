@@ -5,6 +5,7 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace ChampionStatsBuilder
 {
@@ -18,152 +19,160 @@ namespace ChampionStatsBuilder
 
         List<String> champions = new List<string>
             {
-                "Aatrox",
-                "Ahri",
-                "Akali",
-                "Alistar",
-                "Amumu",
-                "Anivia",
-                "Annie",
-                "Ashe",
-                "Aurelion Sol",
-                "Azir",
-                "Bard",
-                "Blitzcrank",
-                "Brand",
-                "Braum",
-                "Caitlyn",
-                "Camille",
-                "Cassiopeia",
-                "Cho'Gath",
-                "Corki",
-                "Darius",
-                "Diana",
-                "Dr. Mundo",
-                "Draven",
-                "Ekko",
-                "Elise",
-                "Evelynn",
-                "Ezreal",
-                "Fiddlesticks",
-                "Fiora",
-                "Fizz",
-                "Galio",
-                "Gangplank",
-                "Garen",
-                "Gnar Mini",
-                "Gnar Mega",
-                "Gragas",
-                "Graves",
-                "Hecarim",
-                "Heimerdinger",
-                "Illaoi",
-                "Irelia",
-                "Ivern",
-                "Janna",
-                "Jarvan IV",
-                "Jax",
-                "Jayce",
-                "Jhin",
-                "Jinx",
-                "Kai'Sa",
-                "Kalista",
-                "Karma",
-                "Karthus",
-                "Kassadin",
-                "Katarina",
-                "Kayle",
-                "Kayn",
-                "Kennen",
-                "Kha'Zix",
-                "Kindred",
-                "Kled",
-                "Kog'Maw",
-                "Leblanc",
-                "Lee Sin",
-                "Leona",
-                "Lissandra",
-                "Lucian",
-                "Lulu",
-                "Lux",
-                "Malphite",
-                "Malzahar",
-                "Maokai",
-                "Master Yi",
-                "Miss Fortune",
-                "Mordekaiser",
-                "Morgana",
-                "Nami",
-                "Nasus",
-                "Nautilus",
-                "Nidalee",
-                "Nocturne",
-                "Nunu & Willump",
-                "Olaf",
-                "Orianna",
-                "Ornn",
-                "Pantheon",
-                "Poppy",
-                "Pyke",
-                "Quinn",
-                "Rakan",
-                "Rammus",
-                "Rek'Sai",
-                "Renekton",
-                "Rengar",
-                "Riven",
-                "Rumble",
-                "Ryze",
-                "Sejuani",
-                "Shaco",
-                "Shen",
-                "Shyvana",
-                "Sivir",
-                "Skarner",
-                "Sona",
-                "Soraka",
-                "Swain",
-                "Syndra",
-                "Tahm Kench",
-                "Taliyah",
-                "Talon",
-                "Taric",
-                "Teemo",
-                "Thresh",
-                "Tristana",
-                "Tryndamere",
-                "Twisted Fate",
-                "Twitch",
-                "Udyr",
-                "Urgot",
-                "Varus",
-                "Vayne",
-                "Veigar",
-                "Vel'Koz",
-                "Vi",
-                "Viktor",
-                "Vladimir",
-                "Volibear",
-                "Warwick",
-                "Wukong",
-                "Xayah",
-                "Xerath",
-                "Xin Zhao",
-                "Yasuo",
-                "Yorick",
-                "Zac",
-                "Zed",
-                "Ziggs",
-                "Zilean",
-                "Zoe",
-                "Zyra"
+            "Aatrox",
+            "Ahri",
+            "Akali",
+            "Alistar",
+            "Amumu",
+            "Anivia",
+            "Annie",
+            "Ashe",
+            "Aurelion Sol",
+            "Azir",
+            "Bard",
+            "Blitzcrank",
+            "Brand",
+            "Braum",
+            "Caitlyn",
+            "Camille",
+            "Cassiopeia",
+            "Cho'Gath",
+            "Corki",
+            "Darius",
+            "Diana",
+            "Dr. Mundo",
+            "Draven",
+            "Ekko",
+            "Elise",
+            "Evelynn",
+            "Ezreal",
+            "Fiddlesticks",
+            "Fiora",
+            "Fizz",
+            "Galio",
+            "Gangplank",
+            "Garen",
+            "Gnar",
+            "Gragas",
+            "Graves",
+            "Hecarim",
+            "Heimerdinger",
+            "Illaoi",
+            "Irelia",
+            "Ivern",
+            "Janna",
+            "Jarvan IV",
+            "Jax",
+            "Jayce",
+            "Jhin",
+            "Jinx",
+            "Kai'Sa",
+            "Kalista",
+            "Karma",
+            "Karthus",
+            "Kassadin",
+            "Katarina",
+            "Kayle",
+            "Kayn",
+            "Kennen",
+            "Kha'Zix",
+            "Kindred",
+            "Kled",
+            "Kog'Maw",
+            "LeBlanc",
+            "Lee Sin",
+            "Leona",
+            "Lissandra",
+            "Lucian",
+            "Lulu",
+            "Lux",
+            "Malphite",
+            "Malzahar",
+            "Maokai",
+            "Master Yi",
+            "Miss Fortune",
+            "Mordekaiser",
+            "Morgana",
+            "Nami",
+            "Nasus",
+            "Nautilus",
+            "Neeko",
+            "Nidalee",
+            "Nocturne",
+            "Nunu & Willump",
+            "Olaf",
+            "Orianna",
+            "Ornn",
+            "Pantheon",
+            "Poppy",
+            "Pyke",
+            "Qiyana",
+            "Quinn",
+            "Rakan",
+            "Rammus",
+            "Rek'Sai",
+            "Renekton",
+            "Rengar",
+            "Riven",
+            "Rumble",
+            "Ryze",
+            "Sejuani",
+            "Shaco",
+            "Shen",
+            "Shyvana",
+            "Singed",
+            "Sion",
+            "Sivir",
+            "Skarner",
+            "Sona",
+            "Soraka",
+            "Swain",
+            "Sylas",
+            "Syndra",
+            "Tahm Kench",
+            "Taliyah",
+            "Talon",
+            "Taric",
+            "Teemo",
+            "Thresh",
+            "Tristana",
+            "Trundle",
+            "Tryndamere",
+            "Twisted Fate",
+            "Twitch",
+            "Udyr",
+            "Urgot",
+            "Varus",
+            "Vayne",
+            "Veigar",
+            "Vel'Koz",
+            "Vi",
+            "Viktor",
+            "Vladimir",
+            "Volibear",
+            "Warwick",
+            "Wukong",
+            "Xayah",
+            "Xerath",
+            "Xin Zhao",
+            "Yasuo",
+            "Yorick",
+            "Yuumi",
+            "Zac",
+            "Zed",
+            "Ziggs",
+            "Zilean",
+            "Zoe",
+            "Zyra",
             };
 
         public MainWindow()
         {
             InitializeComponent();
             
-            List<String> currChamps = JsonConvert.DeserializeObject<List<String>>(File.ReadAllText(resourcesDir + "\\champions.json"));
+            //File.WriteAllText(resourcesDir + "\\champion_names.json", JsonConvert.SerializeObject(champions));
+
+            List<String> currChamps = JsonConvert.DeserializeObject<List<String>>(File.ReadAllText(resourcesDir + "\\champion_names.json"));
             ChampBox.ItemsSource = currChamps;
 
             LevelBox.ItemsSource = Enumerable.Range(1, 18);
@@ -178,17 +187,19 @@ namespace ChampionStatsBuilder
             if (currChamp == null)
             {
                 MessageBoxResult errorPopup = MessageBox.Show("Please select a champion.");
+                return;
             }
             var currLevel = LevelBox.SelectedItem;
 
             if (currLevel == null)
             {
                 MessageBoxResult errorPopup = MessageBox.Show("Please select a champion level.");
+                return;
             }
 
 
 
-            var champFile = resourcesDir + "\\" + currChamp + ".json";
+            var champFile = resourcesDir + "\\champions\\" + currChamp + ".json";
 
             if (!File.Exists(champFile))
             {
@@ -196,7 +207,31 @@ namespace ChampionStatsBuilder
                 return;
             }
 
-            Champion champion = JsonConvert.DeserializeObject<Champion>(File.ReadAllText(champFile));
+            //Champion champion = JsonConvert.DeserializeObject<Champion>(File.ReadAllText(champFile));
+            
+            JToken token = JObject.Parse(File.ReadAllText(champFile));
+            JToken stats = (JToken)(token.SelectToken("data").First.First).SelectToken("stats");
+            
+            Champion champion = new Champion((String)token.SelectToken("id"));
+            champion.Health = (string)stats.SelectToken("hp");
+            champion.HealthRegen = (string)stats.SelectToken("hpregen");
+            champion.Mana = (string)stats.SelectToken("mp");
+            champion.ManaRegen = (string)stats.SelectToken("mpregen");
+            champion.Manaless = (champion.Mana == "0").ToString();
+            champion.AutoRange = (string)stats.SelectToken("attackrange");
+            champion.MovementSpeed = (string)stats.SelectToken("movespeed");
+            champion.AttackDamage = (string)stats.SelectToken("attackdamage");
+            champion.AttackSpeed = (string)stats.SelectToken("attackspeed");
+            champion.Armor = (string)stats.SelectToken("armor");
+            champion.MagicResist = (string)stats.SelectToken("spellblock");
+            champion.Health_Growth = (string)stats.SelectToken("hpperlevel");
+            champion.HealthRegen_Growth = (string)stats.SelectToken("hpregenperlevel");
+            champion.Mana_Growth = (string)stats.SelectToken("mpperlevel");
+            champion.ManaRegen_Growth = (string)stats.SelectToken("mpregenperlevel");
+            champion.AD_Growth = (string)stats.SelectToken("attackdamageperlevel");
+            champion.AS_Growth = ((float)stats.SelectToken("attackspeedperlevel") / 100f).ToString();
+            champion.Armor_Growth = (string)stats.SelectToken("armorperlevel");
+            champion.MR_Growth = (string)stats.SelectToken("spellblockperlevel");
 
             int n = (int)currLevel;
 
@@ -437,6 +472,14 @@ namespace ChampionStatsBuilder
         public string AS_Growth { get; set; }
         public string Armor_Growth { get; set; }
         public string MR_Growth { get; set; }
+        public Champion()
+        {
+        }
+        public Champion(string name)
+        {
+            this.Name = name;
+        }
+
         public double CalculateHealth(int n)
         {
             return Double.Parse(Health) + Double.Parse(Health_Growth) * (n - 1) * (0.7025 + 0.0175 * (n - 1));
