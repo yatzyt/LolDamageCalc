@@ -1,1 +1,1 @@
-Currently abandonded
+Currently abandoned
