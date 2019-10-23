@@ -290,7 +290,7 @@ namespace ChampionStatsBuilder
             var champFile = resourcesDir + "\\" + currChamp + ".json";
 
             Boolean fileExists = File.Exists(champFile);
-
+            /*
             Champion champion;
 
             if (fileExists)
@@ -322,7 +322,7 @@ namespace ChampionStatsBuilder
             champion.MR_Growth = MRGBox.Text;
 
             File.WriteAllText(champFile, JsonConvert.SerializeObject(champion, Formatting.Indented));
-
+            */
             MessageBoxResult successPopup = MessageBox.Show("Stats saved.");
         }
         
