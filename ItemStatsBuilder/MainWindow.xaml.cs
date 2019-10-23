@@ -32,12 +32,20 @@ namespace ItemStatsBuilder
             JToken token = JObject.Parse(File.ReadAllText(itemDir));
             JToken data = token.SelectToken("data");
 
-            foreach (JToken itemData in data)
+            foreach (JProperty itemData in data)
             {
                 Item item = new Item((string)itemData.First.SelectToken("name"));
+                item.id = itemData.Name;
+                item.description = (string)itemData.First.SelectToken("description");
+                item.tags = itemData.First.SelectToken("tags").ToObject<List<string>>();
                 item.stats = itemData.First.SelectToken("stats").ToObject<Dictionary<string, string>>();
                 items.Add(item);                
             }
+
+            List<string> itemNames = items.Select(o => o.name).ToList();
+
+            itemCombo.ItemsSource = itemNames;
+
         }
     }
 
@@ -50,6 +58,12 @@ namespace ItemStatsBuilder
         { name = n; }
 
         public string name { get; set; }
+
+        public string id { get; set; }
+
+        public string description { get; set; }
+
+        public List<string> tags { get; set; }
 
         public Dictionary<string, string> stats { get; set; }
     }
