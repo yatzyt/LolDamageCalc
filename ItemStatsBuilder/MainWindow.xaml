@@ -5,9 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ItemStatsBuilder"
         mc:Ignorable="d"
-        Title="Item Stats Viewer" Height="450" Width="800">
+        Title="Item Stats Viewer" Height="547" Width="435">
     <Grid>
-        <Label x:Name="itemLabel" Content="Item" HorizontalAlignment="Left" Margin="45,29,0,0" VerticalAlignment="Top"/>
-        <ComboBox x:Name="itemCombo" HorizontalAlignment="Left" Margin="72,60,0,0" VerticalAlignment="Top" Width="120"/>
+        <Label x:Name="itemLabel" Content="Item" HorizontalAlignment="Left" Margin="45,29,0,0" VerticalAlignment="Top" Height="26" Width="34"/>
+        <ComboBox x:Name="itemCombo" HorizontalAlignment="Left" Margin="72,60,0,0" VerticalAlignment="Top" Width="255" Height="22"/>
+        <Label x:Name="desrLabel" Content="Description" HorizontalAlignment="Left" Margin="45,87,0,0" VerticalAlignment="Top" Height="26" Width="90"/>
+        <TextBlock x:Name="desrText" HorizontalAlignment="Left" Margin="72,118,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="120" Width="255"/>
     </Grid>
 </Window>
