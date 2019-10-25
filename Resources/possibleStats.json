@@ -1,0 +1,14 @@
+[
+  "FlatMovementSpeedMod",
+  "FlatHPPoolMod",
+  "FlatCritChanceMod",
+  "FlatMagicDamageMod",
+  "FlatMPPoolMod",
+  "FlatArmorMod",
+  "FlatSpellBlockMod",
+  "FlatPhysicalDamageMod",
+  "PercentAttackSpeedMod",
+  "PercentLifeStealMod",
+  "FlatHPRegenMod",
+  "PercentMovementSpeedMod"
+]
