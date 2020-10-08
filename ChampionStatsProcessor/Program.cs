@@ -8,7 +8,7 @@ namespace ChampionStatsProcessor
 {
     public class Data
     {
-        public string type
+        public string type;
     }
 
     class Program
