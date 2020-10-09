@@ -85,6 +85,11 @@ namespace Champions
                 return AutoRange;
         }
 
+        public object GetChampion(string championName)
+        {
+            Type t = Type.GetType(championName);
+            return Activator.CreateInstance(t);
+        }
             
     }
 }
