@@ -40,9 +40,9 @@ namespace Champions
             this.Name = name;
         }
 
-        public double CalculateHealth(int n)
+        public double CalculateHealth(int n) //TODO: probably redo this system to be easier to use, as in setting stats to doubles not strings
         {
-            return Double.Parse(Health) + Double.Parse(Health_Growth) * (n - 1) * (0.7025 + 0.0175 * (n - 1));
+            return Double.Parse(Health) + Double.Parse(Health_Growth) * (Level - 1) * (0.7025 + 0.0175 * (Level - 1));
         }
         public double CalculateHealthRegen(int n)
         {
@@ -59,6 +59,38 @@ namespace Champions
         public double CalculateAD(int n) //TODO: add items to these functions
         {
             return Double.Parse(AttackDamage) + Double.Parse(AD_Growth) * (n - 1) * (0.7025 + 0.0175 * (n - 1));
+        }
+        public double CalculateBonusAD(int n)
+        {
+            return 0;
+        }
+        public double CalculateLethality(int n)
+        {
+            return 0;
+        }
+        public double CalculatePercentArmorPen(int n)
+        {
+            return 0;
+        }
+        public double CalculatePercentBonusArmorPen(int n)
+        {
+            return 0;
+        }
+        public double CalculateAP(int n)
+        {
+            return 0;
+        }
+        public double CalculateFlatMagicPen(int n)
+        {
+            return 0;
+        }
+        public double CalculatePercentMagicPen(int n)
+        {
+            return 0;
+        }
+        public double CalculatePercentBonusMagicPen(int n)
+        {
+            return 0;
         }
         public double CalculateBonusAS(int n)
         {
@@ -85,6 +117,11 @@ namespace Champions
                 return AutoRange;
         }
 
+        public object GetChampion(string championName)
+        {
+            Type t = Type.GetType(championName);
+            return Activator.CreateInstance(t);
+        }
             
     }
 }
