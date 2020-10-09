@@ -60,6 +60,10 @@ namespace Champions
         {
             return Double.Parse(AttackDamage) + Double.Parse(AD_Growth) * (n - 1) * (0.7025 + 0.0175 * (n - 1));
         }
+        public double CalculateAP(int n)
+        {
+            return 0;
+        }
         public double CalculateBonusAS(int n)
         {
             if (Name == "Gnar Mini")
