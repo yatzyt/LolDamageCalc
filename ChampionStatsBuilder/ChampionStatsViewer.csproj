@@ -102,6 +102,10 @@
       <Project>{d15aabdc-2a6c-407c-9408-dbf0dab11580}</Project>
       <Name>Champions</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Items\Items.csproj">
+      <Project>{1ab22a11-4988-4b39-8ec2-1e039296027c}</Project>
+      <Name>Items</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
