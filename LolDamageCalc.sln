@@ -3,12 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27703.2042
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChampionStatsViewer", "ChampionStatsBuilder\ChampionStatsViewer.csproj", "{B6BD8BCC-CCDD-4B16-AFD2-726C935365D5}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChampionStatsProcessor", "ChampionStatsProcessor\ChampionStatsProcessor.csproj", "{F1F384E5-5F29-4365-8A66-E6135C0BAC61}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ItemStatsViewer", "ItemStatsBuilder\ItemStatsViewer.csproj", "{D21A8260-F791-4123-8CA3-AF87EC57A1D0}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Champions", "Champions\Champions.csproj", "{D15AABDC-2A6C-407C-9408-DBF0DAB11580}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Items", "Items\Items.csproj", "{1AB22A11-4988-4B39-8EC2-1E039296027C}"
