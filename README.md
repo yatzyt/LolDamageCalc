@@ -2,4 +2,4 @@
 
 Goal: Build a damage calculator for League of Legends.
 
-Data is taken from Riot Games' Dragon data set.
+Data in Resources folder is taken from Riot Games' Dragon data set.
