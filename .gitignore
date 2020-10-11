@@ -262,3 +262,6 @@ __pycache__/
 /Resources/data/en_US
 /Resources/img
 /TestingGrounds
+/ChampionStatsBuilder
+/ChampionStatsProcessor
+/ItemStatsBuilder
