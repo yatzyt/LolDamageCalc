@@ -1,33 +1,67 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Items;
 
 namespace Champions
 {
     public class Champion
     {
-        public string Name { get; set; }
-        public int Level { get; set; }
-        public string Health { get; set; }
-        public string HealthRegen { get; set; }
-        public string Mana { get; set; }
-        public string ManaRegen { get; set; }
-        public string Manaless { get; set; }
-        public string AutoRange { get; set; }
-        public string MovementSpeed { get; set; }
-        public string AttackDamage { get; set; }
-        public string AttackSpeed { get; set; }
-        public string Armor { get; set; }
-        public string MagicResist { get; set; }
-        public string Health_Growth { get; set; }
-        public string HealthRegen_Growth { get; set; }
-        public string Mana_Growth { get; set; }
-        public string ManaRegen_Growth { get; set; }
-        public string AD_Growth { get; set; }
-        public string AS_Growth { get; set; }
-        public string Armor_Growth { get; set; }
-        public string MR_Growth { get; set; }
-        public string AbilityHaste { get; set; }
+        public string Name { get; }
+        public int Level { get; }
+
+        // Health block
+        public double HP { get; }
+        public double HPRegen { get; }
+        public double Health_Growth { get; }
+        public double HealthRegen_Growth { get; }
+
+        // Resource block. Mana = energy
+        public double Mana { get; }
+        public double ManaRegen { get; }
+        public double Mana_Growth { get; }
+        public double ManaRegen_Growth { get; }
+        public bool Manaless { get; }
+
+        // Auto block
+        public double AutoRange { get; }
+
+        // Movement block
+        public double MovementSpeed { get; }
+        public double MovementSpeedPercent { get; }
+
+        // AD block
+        public double AD { get; }
+        public double AD_Growth { get; }
+        public double AttackSpeed { get; }
+        public double AttackSpeed_Growth { get; }
+        public double CritDamage { get; }
+        public double CritChance { get; }
+        public double Lethality { get; }
+        public double ArmorPen { get; }
+        public double BonusArmorPen { get; }
+
+        // AP block
+        public double AP { get; }
+        public double AbilityHaste { get; }
+        public double MagicPenFlat { get; }
+        public double MagicPenPerc { get; }
+        public double BonusMagicPenPerc { get; }
+
+        // Resistances block
+        public double Armor { get; }
+        public double MR { get; }
+        public double Armor_Growth { get; }
+        public double MR_Growth { get; }
+
+        // Misc block
+        public double Tenacity { get; }
+        public double PhysicalVamp { get; }
+        public double Omnivamp { get; }
+        public double HealAndShieldPower { get; }
+
+        // Items
+        public List<Item> Inventory { get; set; }
 
         /// <summary>
         /// Note: does not take into account Armor and MR when outputing damage numbers.
@@ -40,25 +74,25 @@ namespace Champions
             this.Name = name;
         }
 
-        public double CalculateHealth(int n) //TODO: probably redo this system to be easier to use, as in setting stats to doubles not strings
+        public double CalculateHealth(int n) 
         {
-            return Double.Parse(Health) + Double.Parse(Health_Growth) * (Level - 1) * (0.7025 + 0.0175 * (Level - 1));
+            return HP + Health_Growth * (Level - 1) * (0.7025 + 0.0175 * (Level - 1));
         }
         public double CalculateHealthRegen(int n)
         {
-            return Double.Parse(HealthRegen) + Double.Parse(HealthRegen_Growth) * (n - 1) * (0.7025 + 0.0175 * (n - 1));
+            return HPRegen + HealthRegen_Growth * (n - 1) * (0.7025 + 0.0175 * (n - 1));
         }
         public double CalculateMana(int n)
         {
-            return Double.Parse(Mana) + Double.Parse(Mana_Growth) * (n - 1) * (0.7025 + 0.0175 * (n - 1));
+            return Mana + Mana_Growth * (n - 1) * (0.7025 + 0.0175 * (n - 1));
         }
         public double CalculateManaRegen(int n)
         {
-            return Double.Parse(ManaRegen) + Double.Parse(ManaRegen_Growth) * (n - 1) * (0.7025 + 0.0175 * (n - 1));
+            return ManaRegen + ManaRegen_Growth * (n - 1) * (0.7025 + 0.0175 * (n - 1));
         }
         public double CalculateAD(int n) //TODO: add items to these functions
         {
-            return Double.Parse(AttackDamage) + Double.Parse(AD_Growth) * (n - 1) * (0.7025 + 0.0175 * (n - 1));
+            return AD + AD_Growth * (n - 1) * (0.7025 + 0.0175 * (n - 1));
         }
         public double CalculateBonusAD(int n)
         {
@@ -95,24 +129,24 @@ namespace Champions
         public double CalculateBonusAS(int n)
         {
             if (Name == "Gnar Mini")
-                return Double.Parse(AS_Growth) * (n - 1) * (0.7025 + 0.0175 * (n - 1) + 0.055);
+                return AttackSpeed_Growth * (n - 1) * (0.7025 + 0.0175 * (n - 1) + 0.055);
             else
-                return Double.Parse(AS_Growth) * (n - 1) * (0.7025 + 0.0175 * (n - 1));
+                return AttackSpeed_Growth * (n - 1) * (0.7025 + 0.0175 * (n - 1));
         }
         public double CalculateArmor(int n)
         {
-            return Double.Parse(Armor) + Double.Parse(Armor_Growth) * (n - 1) * (0.7025 + 0.0175 * (n - 1));
+            return Armor + Armor_Growth * (n - 1) * (0.7025 + 0.0175 * (n - 1));
         }
         public double CalculateMR(int n)
         {
-            return Double.Parse(MagicResist) + Double.Parse(MR_Growth) * (n - 1) * (0.7025 + 0.0175 * (n - 1));
+            return MR + MR_Growth * (n - 1) * (0.7025 + 0.0175 * (n - 1));
         }
-        public string CalculateRange(int n)
+        public double CalculateRange(int n)
         {
             if (Name == "Tristana")
-                return (8 * (n - 1) + Double.Parse(AutoRange)).ToString();
+                return 8 * (n - 1) + AutoRange;
             else if (Name == "Gnar Mini")
-                return (Double.Parse(AutoRange) + 50 + 5.9 * (n - 1)).ToString();
+                return AutoRange + 50 + 5.9 * (n - 1);
             else
                 return AutoRange;
         }
