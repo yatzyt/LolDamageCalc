@@ -4,8 +4,56 @@ using System.Text;
 
 namespace Champions
 {
-    class Aatrox : Champion
+    public class Aatrox : Champion
     {
+        public Aatrox(string name, int level = 1)
+        {
+            Name = name;
+            Level = level;
+
+            HP = 580;
+            HPRegen = 3;
+            Health_Growth = 90;
+            HealthRegen_Growth = 1;
+
+            Mana = 0;
+            ManaRegen = 0;
+            Mana_Growth = 0;
+            ManaRegen_Growth = 0;
+            Manaless = true;
+
+            AutoRange = 175;
+
+            MovementSpeed = 345;
+            MovementSpeedPercent = 0;
+            
+            AD = 60;
+            AD_Growth = 5;
+            AttackSpeed = 0.651;
+            AttackSpeed_Growth = 0.025;
+            CritDamage = 1.75; // Season 11 = 1.75, Season 10 = 2
+            CritChance = 0;
+            Lethality = 0;
+            ArmorPen = 0;
+            BonusArmorPen = 0;
+
+            AP = 0;
+            AbilityHaste = 0;
+            MagicPenFlat = 0;
+            MagicPenPerc = 0;
+            BonusMagicPenPerc = 0;
+
+            Armor = 38;
+            MR = 32.1;
+            Armor_Growth = 3.25;
+            MR_Growth = 1.25;
+
+            Tenacity = 0;
+            PhysicalVamp = 0;
+            Omnivamp = 0;
+            HealAndShieldPower = 0;
+        }
+
         /// <summary><para>Deathbringer Stance</para>
         /// <para>Next basic attack deals 5%-12% of the targer's maximum health based on their level as bonus physical damage.</para>
         /// <para>Heals Aatrox for 100% of the bonus damage dealt.</para></summary>
@@ -17,8 +65,7 @@ namespace Champions
         ///
         public double Passive(string enemy_Level, double enemy_maxHP)
         {
-            int eLevel = 0;
-            int.TryParse(enemy_Level, out eLevel);
+            int.TryParse(enemy_Level, out int eLevel);
             double percent_health = (4.588 + (0.412 * eLevel)) / 100;
             double damage_dealt = enemy_maxHP * percent_health;
             return damage_dealt;
@@ -38,7 +85,7 @@ namespace Champions
         public List<double> Q(int rank)
         {
             double Q1_base = 10 + ((rank - 1) * 20);
-            double Q1_scaling = (60 + ((rank - 1) * 5)) / 100;
+            double Q1_scaling = (60.0 + ((rank - 1) * 5)) / 100;
 
             double Q2_base = Q1_base * 1.25;
             double Q2_scaling = Q1_scaling * 1.25;
@@ -47,8 +94,8 @@ namespace Champions
             double Q3_scaling = Q1_scaling * 1.5;
 
             double Q1_damage_normal = Q1_base + Q1_scaling * CalculateAD(Level);
-            double Q3_damage_normal = Q2_base + Q2_scaling * CalculateAD(Level);
-            double Q2_damage_normal = Q3_base + Q3_scaling * CalculateAD(Level);
+            double Q2_damage_normal = Q2_base + Q2_scaling * CalculateAD(Level);
+            double Q3_damage_normal = Q3_base + Q3_scaling * CalculateAD(Level);
 
             double Q1_damage_sweet = Q1_damage_normal * 1.5;
             double Q2_damage_sweet = Q2_damage_normal * 1.5;

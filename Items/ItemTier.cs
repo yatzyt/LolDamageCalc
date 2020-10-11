@@ -4,8 +4,11 @@ using System.Text;
 
 namespace Items
 {
-    class ItemTier
+    public static class ItemTier
     {
-        public static ItemTier Mythic { get; internal set; }
+        public static int Mythic = 1;
+
+        public static int Legendary = 2;
+
     }
 }

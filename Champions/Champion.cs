@@ -1,33 +1,68 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Items;
+using System.Linq;
 
 namespace Champions
 {
     public class Champion
     {
-        public string Name { get; set; }
+        public string Name { get; internal set; }
         public int Level { get; set; }
-        public string Health { get; set; }
-        public string HealthRegen { get; set; }
-        public string Mana { get; set; }
-        public string ManaRegen { get; set; }
-        public string Manaless { get; set; }
-        public string AutoRange { get; set; }
-        public string MovementSpeed { get; set; }
-        public string AttackDamage { get; set; }
-        public string AttackSpeed { get; set; }
-        public string Armor { get; set; }
-        public string MagicResist { get; set; }
-        public string Health_Growth { get; set; }
-        public string HealthRegen_Growth { get; set; }
-        public string Mana_Growth { get; set; }
-        public string ManaRegen_Growth { get; set; }
-        public string AD_Growth { get; set; }
-        public string AS_Growth { get; set; }
-        public string Armor_Growth { get; set; }
-        public string MR_Growth { get; set; }
-        public string AbilityHaste { get; set; }
+
+        // Health block
+        public double HP { get; internal set; }
+        public double HPRegen { get; internal set; }
+        public double Health_Growth { get; internal set; }
+        public double HealthRegen_Growth { get; internal set; }
+
+        // Resource block. Mana = energy
+        public double Mana { get; internal set; }
+        public double ManaRegen { get; internal set; }
+        public double Mana_Growth { get; internal set; }
+        public double ManaRegen_Growth { get; internal set; }
+        public bool Manaless { get; internal set; }
+
+        // Auto block
+        public double AutoRange { get; internal set; }
+
+        // Movement block
+        public double MovementSpeed { get; internal set; }
+        public double MovementSpeedPercent { get; internal set; }
+
+        // AD block
+        public double AD { get; internal set; }
+        public double AD_Growth { get; internal set; }
+        public double AttackSpeed { get; internal set; }
+        public double AttackSpeed_Growth { get; internal set; }
+        public double CritDamage { get; internal set; } // This is a multiplier
+        public double CritChance { get; internal set; }
+        public double Lethality { get; internal set; }
+        public double ArmorPen { get; internal set; }
+        public double BonusArmorPen { get; internal set; }
+
+        // AP block
+        public double AP { get; internal set; }
+        public double AbilityHaste { get; internal set; }
+        public double MagicPenFlat { get; internal set; }
+        public double MagicPenPerc { get; internal set; }
+        public double BonusMagicPenPerc { get; internal set; }
+
+        // Resistances block
+        public double Armor { get; internal set; }
+        public double MR { get; internal set; }
+        public double Armor_Growth { get; internal set; }
+        public double MR_Growth { get; internal set; }
+
+        // Misc block
+        public double Tenacity { get; internal set; }
+        public double PhysicalVamp { get; internal set; }
+        public double Omnivamp { get; internal set; }
+        public double HealAndShieldPower { get; internal set; }
+
+        // Items
+        public Dictionary<int, Item> Inventory { get; set; }
 
         /// <summary>
         /// Note: does not take into account Armor and MR when outputing damage numbers.
@@ -40,87 +75,113 @@ namespace Champions
             this.Name = name;
         }
 
-        public double CalculateHealth(int n) //TODO: probably redo this system to be easier to use, as in setting stats to doubles not strings
+        public double CalculateHealth(int n) 
         {
-            return Double.Parse(Health) + Double.Parse(Health_Growth) * (Level - 1) * (0.7025 + 0.0175 * (Level - 1));
+            return HP + Health_Growth * (Level - 1) * (0.7025 + 0.0175 * (Level - 1));
         }
+
         public double CalculateHealthRegen(int n)
         {
-            return Double.Parse(HealthRegen) + Double.Parse(HealthRegen_Growth) * (n - 1) * (0.7025 + 0.0175 * (n - 1));
+            return HPRegen + HealthRegen_Growth * (n - 1) * (0.7025 + 0.0175 * (n - 1));
         }
+
         public double CalculateMana(int n)
         {
-            return Double.Parse(Mana) + Double.Parse(Mana_Growth) * (n - 1) * (0.7025 + 0.0175 * (n - 1));
+            return Mana + Mana_Growth * (n - 1) * (0.7025 + 0.0175 * (n - 1));
         }
+
         public double CalculateManaRegen(int n)
         {
-            return Double.Parse(ManaRegen) + Double.Parse(ManaRegen_Growth) * (n - 1) * (0.7025 + 0.0175 * (n - 1));
+            return ManaRegen + ManaRegen_Growth * (n - 1) * (0.7025 + 0.0175 * (n - 1));
         }
+
         public double CalculateAD(int n) //TODO: add items to these functions
         {
-            return Double.Parse(AttackDamage) + Double.Parse(AD_Growth) * (n - 1) * (0.7025 + 0.0175 * (n - 1));
+            return AD + AD_Growth * (n - 1) * (0.7025 + 0.0175 * (n - 1));
         }
+
         public double CalculateBonusAD(int n)
         {
             return 0;
         }
+
         public double CalculateLethality(int n)
         {
             return 0;
         }
+
         public double CalculatePercentArmorPen(int n)
         {
             return 0;
         }
+
         public double CalculatePercentBonusArmorPen(int n)
         {
             return 0;
         }
+
         public double CalculateAP(int n)
         {
             return 0;
         }
+
         public double CalculateFlatMagicPen(int n)
         {
             return 0;
         }
+
         public double CalculatePercentMagicPen(int n)
         {
             return 0;
         }
+
         public double CalculatePercentBonusMagicPen(int n)
         {
             return 0;
         }
+
         public double CalculateBonusAS(int n)
         {
             if (Name == "Gnar Mini")
-                return Double.Parse(AS_Growth) * (n - 1) * (0.7025 + 0.0175 * (n - 1) + 0.055);
+                return AttackSpeed_Growth * (n - 1) * (0.7025 + 0.0175 * (n - 1) + 0.055);
             else
-                return Double.Parse(AS_Growth) * (n - 1) * (0.7025 + 0.0175 * (n - 1));
+                return AttackSpeed_Growth * (n - 1) * (0.7025 + 0.0175 * (n - 1));
         }
+
         public double CalculateArmor(int n)
         {
-            return Double.Parse(Armor) + Double.Parse(Armor_Growth) * (n - 1) * (0.7025 + 0.0175 * (n - 1));
+            return Armor + Armor_Growth * (n - 1) * (0.7025 + 0.0175 * (n - 1));
         }
+
         public double CalculateMR(int n)
         {
-            return Double.Parse(MagicResist) + Double.Parse(MR_Growth) * (n - 1) * (0.7025 + 0.0175 * (n - 1));
+            return MR + MR_Growth * (n - 1) * (0.7025 + 0.0175 * (n - 1));
         }
-        public string CalculateRange(int n)
+
+        public double CalculateRange(int n)
         {
             if (Name == "Tristana")
-                return (8 * (n - 1) + Double.Parse(AutoRange)).ToString();
+                return 8 * (n - 1) + AutoRange;
             else if (Name == "Gnar Mini")
-                return (Double.Parse(AutoRange) + 50 + 5.9 * (n - 1)).ToString();
+                return AutoRange + 50 + 5.9 * (n - 1);
             else
                 return AutoRange;
         }
 
-        public object GetChampion(string championName)
+        public double ConvertHasteToCDR()
+        {
+            return 1 - (1 / (1 + (AbilityHaste / 100)));
+        }
+
+        public static object GetChampion(string championName)
         {
             Type t = Type.GetType(championName);
-            return Activator.CreateInstance(t);
+            if (championName.Contains("."))
+            {
+                championName = championName.Split('.').Last();
+            }
+            object[] args = new object[] { championName, 1 };
+            return Activator.CreateInstance(t, args);
         }
             
     }

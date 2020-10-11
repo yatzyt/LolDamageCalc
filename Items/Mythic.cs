@@ -6,11 +6,11 @@ namespace Items
 {
     class Mythic : Item
     {
-        public ItemTier tier = ItemTier.Mythic;
+        public int tier;
 
         public Mythic()
         {
-            tier = new ItemTier();
+            tier = ItemTier.Mythic;
         }
     }
 }

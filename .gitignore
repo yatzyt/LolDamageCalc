@@ -261,3 +261,8 @@ __pycache__/
 *.pyc
 /Resources/data/en_US
 /Resources/img
+/TestingGrounds
+/ChampionStatsBuilder
+/ChampionStatsProcessor
+/ItemStatsBuilder
+/LolDamageCalc_BAK.sln
