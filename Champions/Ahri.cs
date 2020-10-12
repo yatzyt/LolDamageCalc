@@ -4,8 +4,58 @@ using System.Text;
 
 namespace Champions
 {
-    class Ahri : Champion
+    public class Ahri : Champion
     {
+        public Ahri(string name = "Ahri", int level = 1)
+        {
+            Name = name;
+            Level = level;
+
+            HP = 526.0;
+            Health_Growth = 92.0;
+            HPRegen = 5.5;
+            HealthRegen_Growth = 0.6;
+
+            Mana = 418.0;
+            Mana_Growth = 25.0;
+            ManaRegen = 8.0;
+            ManaRegen_Growth = 0.8;
+            Manaless = false;
+            Energy = false;
+
+            AutoRange = 550.0;
+
+            MovementSpeed = 330.0;
+            MovementSpeedPercent = 0.0;
+
+            AD = 53.04;
+            AD_Growth = 3.0;
+            BonusAD = 0.0;
+            AttackSpeed = 0.668;
+            AttackSpeed_Growth = 0.02;
+            CritDamage = 1.75; // Season 11 = 1.75, Season 10 = 2
+            CritChance = 0.0;
+            Lethality = 0.0;
+            ArmorPen = 0.0;
+            BonusArmorPen = 0.0;
+
+            AP = 0.0;
+            AbilityHaste = 0.0;
+            MagicPenFlat = 0.0;
+            MagicPenPerc = 0.0;
+            BonusMagicPenPerc = 0.0;
+
+            Armor = 20.88;
+            Armor_Growth = 3.5;
+            MR = 30;
+            MR_Growth = 0.5;
+
+            Tenacity = 0;
+            PhysicalVamp = 0;
+            Omnivamp = 0;
+            HealAndShieldPower = 0;
+        }
+
         /// <summary>
         /// Orb of Deception
         /// <para>Per pass</para>

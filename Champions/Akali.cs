@@ -4,14 +4,63 @@ using System.Text;
 
 namespace Champions
 {
-    class Akali : Champion
+    public class Akali : Champion
     {
-        /// <summary>
-        /// Assassin's Mark
-        /// <para>39/42/45/48/51/54/57/60/69/78/87/96/105/120/135/150/165/180 + 60% bAD + 50% AP</para>
-        /// </summary>
-        /// <returns></returns>
-        public double Passive()
+        public Akali(string name = "Akali", int level = 1)
+        {
+            Name = name;
+            Level = level;
+
+            HP = 575.0;
+            Health_Growth = 95.0;
+            HPRegen = 8.0;
+            HealthRegen_Growth = 0.5;
+
+            Mana = 200.0;
+            Mana_Growth = 0.0;
+            ManaRegen = 50.0;
+            ManaRegen_Growth = 0.0;
+            Manaless = false;
+			Energy = true;
+
+            AutoRange = 125.0;
+
+            MovementSpeed = 345.0;
+            MovementSpeedPercent = 0.0;
+            
+            AD = 62.4;
+            AD_Growth = 3.3;
+            AttackSpeed = 0.625;
+            AttackSpeed_Growth = 0.032;
+            CritDamage = 1.75; // Season 11 = 1.75, Season 10 = 2
+            CritChance = 0.0;
+            Lethality = 0.0;
+            ArmorPen = 0.0;
+            BonusArmorPen = 0.0;
+
+            AP = 0.0;
+            AbilityHaste = 0.0;
+            MagicPenFlat = 0.0;
+            MagicPenPerc = 0.0;
+            BonusMagicPenPerc = 0.0;
+
+            Armor = 23.0;
+            Armor_Growth = 3.5;
+            MR = 37.0;
+            MR_Growth = 1.25;
+
+            Tenacity = 0.0;
+            PhysicalVamp = 0.0;
+            Omnivamp = 0.0;
+            HealAndShieldPower = 0.0;
+        }
+
+    /// <summary>
+    /// Assassin's Mark
+    /// <para>39/42/45/48/51/54/57/60/69/78/87/96/105/120/135/150/165/180 + 60% bAD + 50% AP</para>
+    /// </summary>
+    /// <returns></returns>
+    public double Passive()
         {
             double P_base = 0;
             if (Level <= 8)
