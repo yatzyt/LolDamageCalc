@@ -35,7 +35,6 @@ namespace Champions
         // AD block
         public double AD { get; internal set; }
         public double AD_Growth { get; internal set; }
-        public double BonusAD { get; internal set; }
         public double AttackSpeed { get; internal set; }
         public double AttackSpeed_Growth { get; internal set; }
         public double CritDamage { get; internal set; } // This is a multiplier

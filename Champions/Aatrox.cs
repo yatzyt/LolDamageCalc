@@ -30,7 +30,6 @@ namespace Champions
             
             AD = 60.0;
             AD_Growth = 5.0;
-            BonusAD = 0.0;
             AttackSpeed = 0.651;
             AttackSpeed_Growth = 0.025;
             CritDamage = 1.75; // Season 11 = 1.75, Season 10 = 2
