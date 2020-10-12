@@ -68,9 +68,32 @@ namespace Champions
             return 0.1;
         }
 
+        /// <summary>
+        /// Bandage Toss
+        /// <para>80/130/180/230/280 + 70% AP</para>
+        /// </summary>
+        /// <param name="rank">Rank of spell as an int.</param>
+        /// <returns>Damage dealt as a double.</returns>
         public double Q(int rank)
         {
-            return 0;
+            double Q_base = 80.0 + ((rank - 1) * 50);
+            double Q_scaling = .7;
+
+            double Q_damage = Q_base
+                + Q_scaling * CalculateAP();
+
+            return Q_damage;
+        }
+
+        /// <summary>
+        /// Despair
+        /// <para>5/7.5/10/12.5/15 + 0.5/0.625/0.75/0.875/1% (+ 0.5% per 100AP) of target's maximum health</para>
+        /// </summary>
+        /// <param name="rank">Rank of spell as an int.</param>
+        /// <returns>Damage dealt as a double.</returns>
+        public double W(int rank, double enemy_health)
+        {
+            double W_base = 5.0 + 
         }
 }
 }

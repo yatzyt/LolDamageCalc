@@ -68,10 +68,9 @@ namespace Champions
         /// 
         /// <returns>Returns a string containting the amount of damage dealt.</returns>
         ///
-        public double Passive(string enemy_Level, double enemy_maxHP)
+        public double Passive(double enemy_maxHP)
         {
-            int.TryParse(enemy_Level, out int eLevel);
-            double percent_health = (4.588 + (0.412 * eLevel)) / 100;
+            double percent_health = (4.588 + (0.412 * Level)) / 100;
             double damage_dealt = enemy_maxHP * percent_health;
             return damage_dealt;
         }
