@@ -87,13 +87,63 @@ namespace Champions
 
         /// <summary>
         /// Despair
-        /// <para>5/7.5/10/12.5/15 + 0.5/0.625/0.75/0.875/1% (+ 0.5% per 100AP) of target's maximum health</para>
+        /// <para>5/7.5/10/12.5/15 + 0.5/0.625/0.75/0.875/1% (+ 0.5% per 100AP) of target's maximum health, per 0.5 seconds.</para>
         /// </summary>
         /// <param name="rank">Rank of spell as an int.</param>
         /// <returns>Damage dealt as a double.</returns>
         public double W(int rank, double enemy_health)
         {
-            double W_base = 5.0 + 
+            double W_base = 5.0 + ((rank - 1) * 2.5);
+            double W_scaling = 0.005;
+            double W_percentHP_scaling = 0.005 + ((rank - 1) * 0.00125) + W_scaling * CalculateAP();
+
+            double W_damage = W_base 
+                + enemy_health * W_percentHP_scaling;
+
+            return W_damage;
+        }
+
+        /// <summary>
+        /// Tantrum
+        /// <para>Physical damage reduction: 2/4/6/8/10 + 3% bonus armor + 3% bonus mr</para>
+        /// <para>Damage: 75/100/125/150/175 + 50% AP</para>
+        /// </summary>
+        /// <param name="rank">Rank of spell as an int.</param>
+        /// <returns>Damage dealt as a double.</returns>
+        public double E(int rank)
+        {
+            double E_base_reduction = 2 + ((rank - 1) * 2);
+            double E_scaling_reduction = 0.03;
+            double E_reduction = E_base_reduction
+                + E_scaling_reduction * CalculateBonusArmor()
+                + E_scaling_reduction * CalculateBonusMR();
+
+            FlatPhysDamageReduction = E_reduction;
+
+            double E_base = 75.0 + ((rank - 1) * 25);
+            double E_scaling = 0.5;
+
+            double E_damage = E_base
+                + E_scaling * CalculateAP();
+
+            return E_damage;
+        }
+
+        /// <summary>
+        /// Curse of the Sad Mummy
+        /// <para>150/250/350 + 80% AP</para>
+        /// </summary>
+        /// <param name="rank"></param>
+        /// <returns></returns>
+        public double R(int rank)
+        {
+            double R_base = 150.0 + ((rank - 1) * 100);
+            double R_scaling = .8;
+
+            double R_damage = R_base
+                + R_scaling * CalculateAP();
+
+            return R_damage;
         }
 }
 }

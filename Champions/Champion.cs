@@ -59,6 +59,7 @@ namespace Champions
 
         // Damage Reduction block, seperate from what armor and mr provides
         public double PhysDamageReduction { get; internal set; }
+        public double FlatPhysDamageReduction { get; internal set; }
         public double MagicDamageReduction { get; internal set; }
         public double MostDamageReduction { get; internal set; }
 
@@ -173,6 +174,16 @@ namespace Champions
                 return AutoRange + 50 + 5.9 * (Level - 1);
             else
                 return AutoRange;
+        }
+
+        public double CalculateBonusArmor()
+        {
+            return 0;
+        }
+
+        public double CalculateBonusMR()
+        {
+            return 0;
         }
 
         public double ConvertHasteToCDR()
