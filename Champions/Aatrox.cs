@@ -8,51 +8,55 @@ namespace Champions
     {
         public Aatrox(string name = "Aatrox", int level = 1)
         {
-            Name = name;
-            Level = level;
+            Name                 = name;
+            Level                = level;
 
-            HP = 580.0;
-            Health_Growth = 90.0;
-            HPRegen = 3.0;
-            HealthRegen_Growth = 1.0;
+            HP                   = 580.0;
+            Health_Growth        = 90.0;
+            HPRegen              = 3.0;
+            HealthRegen_Growth   = 1.0;
 
-            Mana = 0;
-            Mana_Growth = 0;
-            ManaRegen = 0;
-            ManaRegen_Growth = 0;
-            Manaless = true;
-            Energy = false;
+            Mana                 = 0;
+            Mana_Growth          = 0;
+            ManaRegen            = 0;
+            ManaRegen_Growth     = 0;
+            Manaless             = true;
+            Energy               = false;
 
-            AutoRange = 175.0;
+            AutoRange            = 175.0;
 
-            MovementSpeed = 345.0;
+            MovementSpeed        = 345.0;
             MovementSpeedPercent = 0;
             
-            AD = 60.0;
-            AD_Growth = 5.0;
-            AttackSpeed = 0.651;
-            AttackSpeed_Growth = 0.025;
-            CritDamage = 1.75; // Season 11 = 1.75, Season 10 = 2
-            CritChance = 0.0;
-            Lethality = 0.0;
-            ArmorPen = 0.0;
-            BonusArmorPen = 0.0;
+            AD                   = 60.0;
+            AD_Growth            = 5.0;
+            AttackSpeed          = 0.651;
+            AttackSpeed_Growth   = 0.025;
+            CritDamage           = 1.75;         // Season 11 = 1.75, Season 10 = 2
+            CritChance           = 0.0;
+            Lethality            = 0.0;
+            ArmorPen             = 0.0;
+            BonusArmorPen        = 0.0;
 
-            AP = 0.0;
-            AbilityHaste = 0.0;
-            MagicPenFlat = 0.0;
-            MagicPenPerc = 0.0;
-            BonusMagicPenPerc = 0;
+            AP                   = 0.0;
+            AbilityHaste         = 0.0;
+            MagicPenFlat         = 0.0;
+            MagicPenPerc         = 0.0;
+            BonusMagicPenPerc    = 0;
 
-            Armor = 38.0;
-            Armor_Growth = 3.25;
-            MR = 32.1;
-            MR_Growth = 1.25;
+            Armor                = 38.0;
+            Armor_Growth         = 3.25;
+            MR                   = 32.1;
+            MR_Growth            = 1.25;
 
-            Tenacity = 0.0;
-            PhysicalVamp = 0.0;
-            Omnivamp = 0.0;
-            HealAndShieldPower = 0.0;
+            PhysDamageReduction  = 0.0;
+            MagicDamageReduction = 0.0;
+            MostDamageReduction  = 0.0;
+
+            Tenacity             = 0.0;
+            PhysicalVamp         = 0.0;
+            Omnivamp             = 0.0;
+            HealAndShieldPower   = 0.0;
         }
 
         /// <summary><para>Deathbringer Stance</para>
@@ -94,9 +98,14 @@ namespace Champions
             double Q3_base = Q1_base * 1.5;
             double Q3_scaling = Q1_scaling * 1.5;
 
-            double Q1_damage_normal = Q1_base + Q1_scaling * CalculateAD(Level);
-            double Q2_damage_normal = Q2_base + Q2_scaling * CalculateAD(Level);
-            double Q3_damage_normal = Q3_base + Q3_scaling * CalculateAD(Level);
+            double Q1_damage_normal = Q1_base 
+                + Q1_scaling * CalculateAD();
+
+            double Q2_damage_normal = Q2_base 
+                + Q2_scaling * CalculateAD();
+
+            double Q3_damage_normal = Q3_base 
+                + Q3_scaling * CalculateAD();
 
             double Q1_damage_sweet = Q1_damage_normal * 1.5;
             double Q2_damage_sweet = Q2_damage_normal * 1.5;
@@ -116,7 +125,10 @@ namespace Champions
         {
             double W_base = 30 + ((rank - 1) * 10);
             double W_scaling = .4;
-            double W_damage = W_base + W_scaling * CalculateAD(Level);
+
+            double W_damage = W_base 
+                + W_scaling * CalculateAD();
+
             return W_damage;
         }
         
@@ -129,7 +141,7 @@ namespace Champions
         public double R(int rank)
         {
             double R_bAD_scaling = .2 + ((rank - 1) * .1);
-            double R_bAD = CalculateAD(Level);
+            double R_bAD = CalculateAD();
             return R_bAD;
         }
 

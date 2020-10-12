@@ -8,51 +8,55 @@ namespace Champions
     {
         public Ahri(string name = "Ahri", int level = 1)
         {
-            Name = name;
-            Level = level;
+            Name                 = name;
+            Level                = level;
 
-            HP = 526.0;
-            Health_Growth = 92.0;
-            HPRegen = 5.5;
-            HealthRegen_Growth = 0.6;
+            HP                   = 526.0;
+            Health_Growth        = 92.0;
+            HPRegen              = 5.5;
+            HealthRegen_Growth   = 0.6;
 
-            Mana = 418.0;
-            Mana_Growth = 25.0;
-            ManaRegen = 8.0;
-            ManaRegen_Growth = 0.8;
-            Manaless = false;
-            Energy = false;
+            Mana                 = 418.0;
+            Mana_Growth          = 25.0;
+            ManaRegen            = 8.0;
+            ManaRegen_Growth     = 0.8;
+            Manaless             = false;
+            Energy               = false;
 
-            AutoRange = 550.0;
+            AutoRange            = 550.0;
 
-            MovementSpeed = 330.0;
+            MovementSpeed        = 330.0;
             MovementSpeedPercent = 0.0;
 
-            AD = 53.04;
-            AD_Growth = 3.0;
-            AttackSpeed = 0.668;
-            AttackSpeed_Growth = 0.02;
-            CritDamage = 1.75; // Season 11 = 1.75, Season 10 = 2
-            CritChance = 0.0;
-            Lethality = 0.0;
-            ArmorPen = 0.0;
-            BonusArmorPen = 0.0;
+            AD                   = 53.04;
+            AD_Growth            = 3.0;
+            AttackSpeed          = 0.668;
+            AttackSpeed_Growth   = 0.02;
+            CritDamage           = 1.75; 
+            CritChance           = 0.0;
+            Lethality            = 0.0;
+            ArmorPen             = 0.0;
+            BonusArmorPen        = 0.0;
 
-            AP = 0.0;
-            AbilityHaste = 0.0;
-            MagicPenFlat = 0.0;
-            MagicPenPerc = 0.0;
-            BonusMagicPenPerc = 0.0;
+            AP                   = 0.0;
+            AbilityHaste         = 0.0;
+            MagicPenFlat         = 0.0;
+            MagicPenPerc         = 0.0;
+            BonusMagicPenPerc    = 0.0;
 
-            Armor = 20.88;
-            Armor_Growth = 3.5;
-            MR = 30;
-            MR_Growth = 0.5;
+            Armor                = 20.88;
+            Armor_Growth         = 3.5;
+            MR                   = 30;
+            MR_Growth            = 0.5;
 
-            Tenacity = 0;
-            PhysicalVamp = 0;
-            Omnivamp = 0;
-            HealAndShieldPower = 0;
+            PhysDamageReduction  = 0.0;
+            MagicDamageReduction = 0.0;
+            MostDamageReduction  = 0.0;
+
+            Tenacity             = 0;
+            PhysicalVamp         = 0;
+            Omnivamp             = 0;
+            HealAndShieldPower   = 0;
         }
 
         /// <summary>
@@ -66,7 +70,7 @@ namespace Champions
         {
             double Q_base = 40 + ((rank - 1) * 25);
             double Q_scaling = .35;
-            double Q_damage = Q_base + Q_scaling * CalculateAP(Level);
+            double Q_damage = Q_base + Q_scaling * CalculateAP();
             return 0;
         }
 
@@ -88,8 +92,8 @@ namespace Champions
             double W_followup_base = W_base * W_followup_penalty;
             double W_followup_scaling = W_scaling * W_followup_penalty;
 
-            double W_damage = W_base + W_scaling * CalculateAP(Level);
-            double W_followup_damage = W_followup_base + W_followup_scaling * CalculateAP(Level);
+            double W_damage = W_base + W_scaling * CalculateAP();
+            double W_followup_damage = W_followup_base + W_followup_scaling * CalculateAP();
 
             W_damages.Add(W_damage);
             W_damages.Add(W_damage + W_followup_damage);
@@ -111,7 +115,7 @@ namespace Champions
             double E_base = 60 + ((rank - 1) * 30);
             double E_scaling = .4;
 
-            double E_damage = E_base + E_scaling * CalculateAP(Level);
+            double E_damage = E_base + E_scaling * CalculateAP();
             double E_amp = .2;
 
             E_values.Add(E_damage);
@@ -131,7 +135,7 @@ namespace Champions
             double R_base = 60 + ((rank - 1) + 30);
             double R_scaling = .35;
 
-            double R_damage = R_base + R_scaling * CalculateAP(Level);
+            double R_damage = R_base + R_scaling * CalculateAP();
 
             return R_damage;
         }

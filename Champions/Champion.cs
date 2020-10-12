@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using Items;
 using System.Linq;
 
@@ -52,9 +51,16 @@ namespace Champions
 
         // Resistances block
         public double Armor { get; internal set; }
+        public double BonusArmor { get; internal set; }
         public double MR { get; internal set; }
+        public double BonusMR { get; internal set; }
         public double Armor_Growth { get; internal set; }
         public double MR_Growth { get; internal set; }
+
+        // Damage Reduction block, seperate from what armor and mr provides
+        public double PhysDamageReduction { get; internal set; }
+        public double MagicDamageReduction { get; internal set; }
+        public double MostDamageReduction { get; internal set; }
 
         // Misc block
         public double Tenacity { get; internal set; }
@@ -76,95 +82,95 @@ namespace Champions
             this.Name = name;
         }
 
-        public double CalculateHealth(int n) 
+        public double CalculateHealth() 
         {
             return HP + Health_Growth * (Level - 1) * (0.7025 + 0.0175 * (Level - 1));
         }
 
-        public double CalculateHealthRegen(int n)
+        public double CalculateHealthRegen()
         {
-            return HPRegen + HealthRegen_Growth * (n - 1) * (0.7025 + 0.0175 * (n - 1));
+            return HPRegen + HealthRegen_Growth * (Level - 1) * (0.7025 + 0.0175 * (Level - 1));
         }
 
-        public double CalculateMana(int n)
+        public double CalculateMana()
         {
-            return Mana + Mana_Growth * (n - 1) * (0.7025 + 0.0175 * (n - 1));
+            return Mana + Mana_Growth * (Level - 1) * (0.7025 + 0.0175 * (Level - 1));
         }
 
-        public double CalculateManaRegen(int n)
+        public double CalculateManaRegen()
         {
-            return ManaRegen + ManaRegen_Growth * (n - 1) * (0.7025 + 0.0175 * (n - 1));
+            return ManaRegen + ManaRegen_Growth * (Level - 1) * (0.7025 + 0.0175 * (Level - 1));
         }
 
-        public double CalculateAD(int n) //TODO: add items to these functions
+        public double CalculateAD() //TODO: add items to these functions
         {
-            return AD + AD_Growth * (n - 1) * (0.7025 + 0.0175 * (n - 1));
+            return AD + AD_Growth * (Level - 1) * (0.7025 + 0.0175 * (Level - 1));
         }
 
-        public double CalculateBonusAD(int n)
-        {
-            return 0;
-        }
-
-        public double CalculateLethality(int n)
+        public double CalculateBonusAD()
         {
             return 0;
         }
 
-        public double CalculatePercentArmorPen(int n)
+        public double CalculateLethality()
         {
             return 0;
         }
 
-        public double CalculatePercentBonusArmorPen(int n)
+        public double CalculatePercentArmorPen()
         {
             return 0;
         }
 
-        public double CalculateAP(int n)
+        public double CalculatePercentBonusArmorPen()
         {
             return 0;
         }
 
-        public double CalculateFlatMagicPen(int n)
+        public double CalculateAP()
         {
             return 0;
         }
 
-        public double CalculatePercentMagicPen(int n)
+        public double CalculateFlatMagicPen()
         {
             return 0;
         }
 
-        public double CalculatePercentBonusMagicPen(int n)
+        public double CalculatePercentMagicPen()
         {
             return 0;
         }
 
-        public double CalculateBonusAS(int n)
+        public double CalculatePercentBonusMagicPen()
+        {
+            return 0;
+        }
+
+        public double CalculateBonusAS()
         {
             if (Name == "Gnar Mini")
-                return AttackSpeed_Growth * (n - 1) * (0.7025 + 0.0175 * (n - 1) + 0.055);
+                return AttackSpeed_Growth * (Level - 1) * (0.7025 + 0.0175 * (Level - 1) + 0.055);
             else
-                return AttackSpeed_Growth * (n - 1) * (0.7025 + 0.0175 * (n - 1));
+                return AttackSpeed_Growth * (Level - 1) * (0.7025 + 0.0175 * (Level - 1));
         }
 
-        public double CalculateArmor(int n)
+        public double CalculateArmor()
         {
-            return Armor + Armor_Growth * (n - 1) * (0.7025 + 0.0175 * (n - 1));
+            return Armor + Armor_Growth * (Level - 1) * (0.7025 + 0.0175 * (Level - 1));
         }
 
-        public double CalculateMR(int n)
+        public double CalculateMR()
         {
-            return MR + MR_Growth * (n - 1) * (0.7025 + 0.0175 * (n - 1));
+            return MR + MR_Growth * (Level - 1) * (0.7025 + 0.0175 * (Level - 1));
         }
 
-        public double CalculateRange(int n)
+        public double CalculateRange()
         {
             if (Name == "Tristana")
-                return 8 * (n - 1) + AutoRange;
+                return 8 * (Level - 1) + AutoRange;
             else if (Name == "Gnar Mini")
-                return AutoRange + 50 + 5.9 * (n - 1);
+                return AutoRange + 50 + 5.9 * (Level - 1);
             else
                 return AutoRange;
         }
