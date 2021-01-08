@@ -28,7 +28,7 @@ namespace Champions
             MovementSpeed        = 330.0;
             MovementSpeedPercent = 0.0;
 
-            AD                   = 53.04;
+            AD                   = 53.0;
             AD_Growth            = 3.0;
             AttackSpeed          = 0.668;
             AttackSpeed_Growth   = 0.02;
@@ -44,7 +44,7 @@ namespace Champions
             MagicPenPerc         = 0.0;
             BonusMagicPenPerc    = 0.0;
 
-            Armor                = 20.88;
+            Armor                = 21.0;
             Armor_Growth         = 3.5;
             MR                   = 30;
             MR_Growth            = 0.5;

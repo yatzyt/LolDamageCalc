@@ -11,12 +11,12 @@ namespace Champions
             Name                 = name;
             Level                = level;
 
-            HP                   = 613.12;
-            Health_Growth        = 84.0;
+            HP                   = 613.0;
+            Health_Growth        = 80.0;
             HPRegen              = 9.0;
             HealthRegen_Growth   = 0.85;
 
-            Mana                 = 287.2;
+            Mana                 = 285.0;
             Mana_Growth          = 40.0;
             ManaRegen            = 7.382;
             ManaRegen_Growth     = 0.525;
@@ -28,7 +28,7 @@ namespace Champions
             MovementSpeed        = 335.0;
             MovementSpeedPercent = 0.0;
             
-            AD                   = 53.38;
+            AD                   = 53.0;
             AD_Growth            = 3.8;
             AttackSpeed          = 0.736;
             AttackSpeed_Growth   = 0.0218;
@@ -44,9 +44,9 @@ namespace Champions
             MagicPenPerc         = 0.0;
             BonusMagicPenPerc    = 0.0;
 
-            Armor                = 33.0;
+            Armor                = 30.0;
             Armor_Growth         = 3.8;
-            MR                   = 32.1;
+            MR                   = 32.0;
             MR_Growth            = 1.25;
 			PhysDamageReduction  = 0.0;
 			MagicDamageReduction = 0.0;

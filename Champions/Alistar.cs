@@ -46,7 +46,7 @@ namespace Champions
 
             Armor = 44.0;
             Armor_Growth = 3.5;
-            MR = 32.1;
+            MR = 32.0;
             MR_Growth = 1.25;
             PhysDamageReduction = 0.0;
             MagicDamageReduction = 0.0;

@@ -28,7 +28,7 @@ namespace Champions
             MovementSpeed        = 345.0;
             MovementSpeedPercent = 0.0;
             
-            AD                   = 62.4;
+            AD                   = 62.0;
             AD_Growth            = 3.3;
             AttackSpeed          = 0.625;
             AttackSpeed_Growth   = 0.032;

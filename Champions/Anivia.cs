@@ -17,7 +17,7 @@ namespace Champions
             HealthRegen_Growth   = 0.55;
 
             Mana                 = 495.0;
-            Mana_Growth          = 25.0;
+            Mana_Growth          = 45.0;
             ManaRegen            = 8.0;
             ManaRegen_Growth     = 0.8;
             Manaless             = false;
@@ -28,7 +28,7 @@ namespace Champions
             MovementSpeed        = 325.0;
             MovementSpeedPercent = 0.0;
             
-            AD                   = 51.376;
+            AD                   = 51.0;
             AD_Growth            = 3.2;
             AttackSpeed          = 0.625;
             AttackSpeed_Growth   = 0.0168;
@@ -44,7 +44,7 @@ namespace Champions
             MagicPenPerc         = 0.0;
             BonusMagicPenPerc    = 0.0;
 
-            Armor                = 21.22;
+            Armor                = 21.0;
             Armor_Growth         = 4.0;
             MR                   = 30.0;
             MR_Growth            = 0.5;
